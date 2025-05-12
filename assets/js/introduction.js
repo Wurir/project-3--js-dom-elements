@@ -21,7 +21,6 @@ tooltipElement.forEach(function(element){
         const imageElement = document.createElement('img')
         imageElement.className = 'tooltip__image'
         imageElement.setAttribute('src', element.dataset.tooltipContent)
-        console.log(imageElement);
         
         spanElement.appendChild(imageElement)
     }

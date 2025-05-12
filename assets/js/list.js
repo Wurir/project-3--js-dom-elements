@@ -43,3 +43,23 @@ const list = [
         link: '#Osadzanie',
     }
 ];
+
+const articleListElement = document.querySelector('.article__list')
+const ulElement = document.createElement('ul')
+articleListElement.appendChild(ulElement)
+
+list.forEach(function(item){
+    if(item.parentId === null){
+        const liEl = document.createElement('li')
+        liEl.dataset.id = item.id
+    
+        const aEl = document.createElement('a')
+        aEl.href = item.link
+        aEl.innerText = item.text
+    
+        liEl.appendChild(aEl)
+        ulElement.appendChild(liEl)
+    }
+})
+
+const liElements = articleListElement.querySelectorAll('li')
