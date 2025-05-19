@@ -63,3 +63,27 @@ list.forEach(function(item){
 })
 
 const liElements = articleListElement.querySelectorAll('li')
+
+liElements.forEach(function(item){
+    const id = Number(item.dataset.id)
+
+    const children = list.filter(function(element){
+        return element.parentId === id
+    })
+
+    if(children.length > 0){
+        const nestedUl = document.createElement('ul')
+
+        children.forEach(function(child){
+            const nestedLi = document.createElement('li')
+            const nestedA = document.createElement('a')
+            nestedLi.appendChild(nestedA)
+            nestedUl.appendChild(nestedLi)
+            item.appendChild(nestedUl)
+
+            nestedLi.dataset.id = child.id
+            nestedA.innerText = child.text
+            nestedA.href = child.link
+        })
+    }
+})

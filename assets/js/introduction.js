@@ -28,3 +28,4 @@ tooltipElement.forEach(function(element){
     element.appendChild(aElement)
     element.appendChild(spanElement)
 })
+
