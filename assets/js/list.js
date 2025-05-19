@@ -50,15 +50,8 @@ articleListElement.appendChild(ulElement)
 
 list.forEach(function(item){
     if(item.parentId === null){
-        const liEl = document.createElement('li')
-        liEl.dataset.id = item.id
-    
-        const aEl = document.createElement('a')
-        aEl.href = item.link
-        aEl.innerText = item.text
-    
-        liEl.appendChild(aEl)
-        ulElement.appendChild(liEl)
+        const liElement = createElement(item.id, item.link, item.text)
+        ulElement.appendChild(liElement)
     }
 })
 
@@ -75,15 +68,21 @@ liElements.forEach(function(item){
         const nestedUl = document.createElement('ul')
 
         children.forEach(function(child){
-            const nestedLi = document.createElement('li')
-            const nestedA = document.createElement('a')
-            nestedLi.appendChild(nestedA)
+            const nestedLi = createElement(child.id, child.link, child.text)
             nestedUl.appendChild(nestedLi)
             item.appendChild(nestedUl)
-
-            nestedLi.dataset.id = child.id
-            nestedA.innerText = child.text
-            nestedA.href = child.link
         })
     }
 })
+
+function createElement(id, link, text){
+    const liEl = document.createElement('li')
+    const aEl = document.createElement('a')
+    liEl.appendChild(aEl)
+
+    liEl.dataset.id = id
+    aEl.href = link
+    aEl.innerText = text
+
+    return liEl
+}
