@@ -50,7 +50,7 @@ articleListElement.appendChild(ulElement)
 
 list.forEach(function(item){
     if(item.parentId === null){
-        const liElement = createElement(item.id, item.link, item.text)
+        const liElement = createItemMenu(item.id, item.link, item.text)
         ulElement.appendChild(liElement)
     }
 })
@@ -68,14 +68,14 @@ liElements.forEach(function(item){
         const nestedUl = document.createElement('ul')
 
         children.forEach(function(child){
-            const nestedLi = createElement(child.id, child.link, child.text)
+            const nestedLi = createItemMenu(child.id, child.link, child.text)
             nestedUl.appendChild(nestedLi)
             item.appendChild(nestedUl)
         })
     }
 })
 
-function createElement(id, link, text){
+function createItemMenu(id, link, text){
     const liEl = document.createElement('li')
     const aEl = document.createElement('a')
     liEl.appendChild(aEl)
